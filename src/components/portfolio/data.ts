@@ -2,6 +2,7 @@ export const NAV_SECTIONS = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
+  { id: "articles", label: "Articles" },
   { id: "skills", label: "Skills" },
   { id: "achievements", label: "Achievements" },
   { id: "education", label: "Education" },
@@ -14,10 +15,10 @@ export const LINKEDIN = "https://www.linkedin.com/";
 export const RESUME_URL = "/resume.pdf";
 
 export const STATS = [
-  { value: "8.3", label: "CGPA" },
   { value: "6+", label: "Hackathon Wins" },
   { value: "5+", label: "Chains Worked On" },
   { value: "Top 60", label: "Move Devs in India" },
+  { value: "1k+", label: "Daily Tx Handled" },
 ];
 
 export const EXPERIENCE = [
@@ -162,9 +163,8 @@ export const EDUCATION = [
   {
     school: "IIT Guwahati",
     degree: "B.Tech, Engineering Physics",
-    score: "CGPA 8.3",
     period: "2022 — Present",
   },
-  { school: "WBCHSE", degree: "Senior Secondary", score: "95.87%", period: "2022" },
-  { school: "WBCHSE", degree: "Secondary", score: "97.89%", period: "2020" },
+  { school: "WBCHSE", degree: "Senior Secondary", period: "2022" },
+  { school: "WBCHSE", degree: "Secondary", period: "2020" },
 ];
