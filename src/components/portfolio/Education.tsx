@@ -4,7 +4,7 @@ import { EDUCATION } from "./data";
 
 export function Education() {
   return (
-    <Section id="education" index="06" title="Education">
+    <Section id="education" index="07" title="Education">
       <Reveal>
         <div className="overflow-hidden rounded-lg border border-border">
           <table className="w-full text-left text-sm">
@@ -18,9 +18,6 @@ export function Education() {
                   Qualification
                 </th>
                 <th scope="col" className="mono-label px-4 py-3 text-right">
-                  Score
-                </th>
-                <th scope="col" className="mono-label hidden px-4 py-3 text-right sm:table-cell">
                   Years
                 </th>
               </tr>
@@ -30,10 +27,7 @@ export function Education() {
                 <tr key={e.degree} className="border-b border-border last:border-0">
                   <td className="px-4 py-4 font-medium">{e.school}</td>
                   <td className="px-4 py-4 text-muted-foreground">{e.degree}</td>
-                  <td className="px-4 py-4 text-right font-mono text-xs text-primary">
-                    {e.score}
-                  </td>
-                  <td className="hidden px-4 py-4 text-right font-mono text-xs text-muted-foreground sm:table-cell">
+                  <td className="px-4 py-4 text-right font-mono text-xs text-muted-foreground">
                     {e.period}
                   </td>
                 </tr>

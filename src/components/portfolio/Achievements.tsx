@@ -8,7 +8,7 @@ export function Achievements() {
   const shown = expanded ? ACHIEVEMENTS : ACHIEVEMENTS.slice(0, 6);
 
   return (
-    <Section id="achievements" index="05" title="Achievements">
+    <Section id="achievements" index="06" title="Achievements">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((a, i) => (
           <Reveal key={a.title} delay={i * 60}>

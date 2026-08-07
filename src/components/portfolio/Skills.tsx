@@ -4,7 +4,7 @@ import { SKILLS } from "./data";
 
 export function Skills() {
   return (
-    <Section id="skills" index="04" title="Skills">
+    <Section id="skills" index="05" title="Skills">
       <div className="grid gap-5 sm:grid-cols-2">
         {SKILLS.map((g, i) => (
           <Reveal key={g.group} delay={i * 70}>

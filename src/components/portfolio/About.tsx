@@ -21,7 +21,7 @@ export function About() {
             </p>
           </div>
           <p className="mt-6 font-mono text-xs text-muted-foreground">
-            B.Tech, Engineering Physics · IIT Guwahati · 2022—Present · CGPA 8.3
+            B.Tech, Engineering Physics · IIT Guwahati · 2022—Present
           </p>
         </Reveal>
 
