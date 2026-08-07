@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { NAV_SECTIONS, RESUME_URL } from "./data";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { NAV_LINKS, RESUME_URL } from "./data";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState<string>("");
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -14,21 +15,8 @@ export function Nav() {
   }, []);
 
   useEffect(() => {
-    const els = NAV_SECTIONS.map((s) => document.getElementById(s.id)).filter(
-      Boolean,
-    ) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: [0, 0.25, 0.5] },
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header
@@ -42,24 +30,22 @@ export function Nav() {
         aria-label="Main"
         className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5"
       >
-        <a href="#top" className="flex min-w-0 items-center gap-2">
+        <Link to="/" className="flex min-w-0 items-center gap-2">
           <span className="font-mono text-sm text-primary">~/</span>
           <span className="truncate text-sm font-semibold tracking-tight">abhinab das</span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
-          {NAV_SECTIONS.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#${s.id}`}
-                className={`rounded-md px-3 py-1.5 font-mono text-xs tracking-wide transition-colors ${
-                  active === s.id
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+          {NAV_LINKS.map((s) => (
+            <li key={s.to}>
+              <Link
+                to={s.to}
+                activeProps={{ className: "text-primary" }}
+                inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
+                className="rounded-md px-3 py-1.5 font-mono text-xs tracking-wide transition-colors"
               >
                 {s.label.toLowerCase()}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -86,16 +72,18 @@ export function Nav() {
       </nav>
 
       {open && (
-        <ul className="mx-auto mt-3 grid max-w-6xl grid-cols-2 gap-1 px-5 pb-3 md:hidden">
-          {NAV_SECTIONS.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#${s.id}`}
+        <ul className="mx-auto mt-3 grid max-w-6xl grid-cols-2 gap-1 border-t border-border bg-background/95 px-5 pb-3 pt-3 backdrop-blur-xl md:hidden">
+          {NAV_LINKS.map((s) => (
+            <li key={s.to}>
+              <Link
+                to={s.to}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 font-mono text-xs text-muted-foreground hover:text-foreground"
+                activeProps={{ className: "text-primary" }}
+                inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
+                className="block rounded-md px-3 py-2 font-mono text-xs"
               >
                 {s.label.toLowerCase()}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
