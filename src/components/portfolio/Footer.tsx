@@ -11,8 +11,8 @@ export function Footer() {
       />
       <div className="relative mx-auto max-w-6xl px-5 py-20 sm:py-28">
         <Reveal>
-          <span className="mono-label text-primary">07 — Contact</span>
-          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
+          <span className="mono-label text-primary">08 — Contact</span>
+          <h2 className="mt-4 max-w-2xl font-serif text-3xl font-normal tracking-tight sm:text-4xl">
             Auditing a protocol, or building one? Let&apos;s talk.
           </h2>
           <div className="mt-8 flex flex-wrap items-center gap-4">

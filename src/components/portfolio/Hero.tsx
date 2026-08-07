@@ -49,8 +49,8 @@ export function Hero() {
           Currently: Web3 Security Researcher @ SentielX Solutions
         </span>
 
-        <h1 className="mt-7 text-5xl font-bold tracking-tight sm:text-7xl">Abhinab Das</h1>
-        <p className="mt-3 text-xl font-medium text-foreground/85 sm:text-2xl">
+        <h1 className="mt-7 font-serif text-5xl font-normal tracking-tight sm:text-7xl">Abhinab Das</h1>
+        <p className="mt-3 font-serif text-xl font-normal text-foreground/90 sm:text-2xl">
           DeFi Engineer &amp; Web3 Security Researcher
         </p>
         <p className="mt-2 text-sm sm:text-base">
