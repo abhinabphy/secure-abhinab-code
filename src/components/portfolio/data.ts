@@ -1,4 +1,4 @@
-export const NAV_LINKS: { to: string; label: string }[] = [
+export const NAV_LINKS = [
   { to: "/about", label: "About" },
   { to: "/experience", label: "Experience" },
   { to: "/projects", label: "Projects" },
@@ -7,7 +7,8 @@ export const NAV_LINKS: { to: string; label: string }[] = [
   { to: "/achievements", label: "Achievements" },
   { to: "/education", label: "Education" },
   { to: "/contact", label: "Contact" },
-];
+] as const;
+
 
 
 export const EMAIL = "abhinabiitg@gmail.com";
