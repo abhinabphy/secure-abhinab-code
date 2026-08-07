@@ -1,13 +1,14 @@
-export const NAV_SECTIONS = [
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Projects" },
-  { id: "articles", label: "Articles" },
-  { id: "skills", label: "Skills" },
-  { id: "achievements", label: "Achievements" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
-] as const;
+export const NAV_LINKS: { to: string; label: string }[] = [
+  { to: "/about", label: "About" },
+  { to: "/experience", label: "Experience" },
+  { to: "/projects", label: "Projects" },
+  { to: "/articles", label: "Articles" },
+  { to: "/skills", label: "Skills" },
+  { to: "/achievements", label: "Achievements" },
+  { to: "/education", label: "Education" },
+  { to: "/contact", label: "Contact" },
+];
+
 
 export const EMAIL = "abhinabiitg@gmail.com";
 export const GITHUB = "https://github.com/";
