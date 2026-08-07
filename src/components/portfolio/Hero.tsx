@@ -14,7 +14,7 @@ function Typed() {
   const [del, setDel] = useState(false);
 
   useEffect(() => {
-    const word = ROTATING[i];
+    const word = ROTATING[i] ?? "";
     if (!del && len === word.length) {
       const t = setTimeout(() => setDel(true), 1600);
       return () => clearTimeout(t);
@@ -30,7 +30,7 @@ function Typed() {
 
   return (
     <span className="font-mono text-primary">
-      {ROTATING[i].slice(0, len)}
+      {(ROTATING[i] ?? "").slice(0, len)}
       <span className="ml-0.5 inline-block h-[1em] w-[2px] translate-y-[2px] bg-primary align-middle motion-safe:animate-pulse" />
     </span>
   );
