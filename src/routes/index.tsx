@@ -1,14 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
-import { About } from "@/components/portfolio/About";
-import { Experience } from "@/components/portfolio/Experience";
-import { Projects } from "@/components/portfolio/Projects";
-import { Articles } from "@/components/portfolio/Articles";
-import { Skills } from "@/components/portfolio/Skills";
-import { Achievements } from "@/components/portfolio/Achievements";
-import { Education } from "@/components/portfolio/Education";
-import { Footer } from "@/components/portfolio/Footer";
 
 const TITLE = "Abhinab Das — DeFi Engineer & Web3 Security Researcher";
 const DESCRIPTION =
@@ -23,10 +14,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "profile" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -51,20 +39,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return (
-    <div className="min-h-screen bg-background">
-      <Nav />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Articles />
-        <Skills />
-        <Achievements />
-        <Education />
-      </main>
-      <Footer />
-    </div>
-  );
+  return <Hero />;
 }

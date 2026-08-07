@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import { EMAIL, GITHUB, LINKEDIN, RESUME_URL } from "./data";
 
 const ROTATING = [
@@ -38,38 +39,51 @@ function Typed() {
 
 export function Hero() {
   return (
-    <section id="top" className="grain relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
+    <section
+      id="top"
+      className="grain relative flex min-h-[100svh] items-center overflow-hidden px-5 py-28"
+    >
       <div
         aria-hidden
-        className="dot-grid pointer-events-none absolute inset-0 opacity-[0.12] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
+        className="dot-grid pointer-events-none absolute inset-0 opacity-[0.1] [mask-image:radial-gradient(ellipse_at_center,black,transparent_72%)]"
       />
-      <div className="relative mx-auto max-w-6xl px-5">
+      <div className="relative mx-auto w-full max-w-3xl">
         <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-mono text-[0.7rem] text-primary">
           <span className="h-1.5 w-1.5 rounded-full bg-primary motion-safe:animate-pulse" />
-          Currently: Web3 Security Researcher @ SentielX Solutions
+          Web3 Security Researcher @ SentielX Solutions
         </span>
 
-        <h1 className="mt-7 font-serif text-5xl font-normal tracking-tight sm:text-7xl">Abhinab Das</h1>
-        <p className="mt-3 font-serif text-xl font-normal text-foreground/90 sm:text-2xl">
+        <h1 className="mt-8 font-serif text-6xl font-normal leading-[0.95] tracking-tight sm:text-8xl">
+          Abhinab Das
+        </h1>
+
+        <p className="mt-5 font-serif text-xl font-normal text-foreground/90 sm:text-2xl">
           DeFi Engineer &amp; Web3 Security Researcher
         </p>
-        <p className="mt-2 text-sm sm:text-base">
+
+        <p className="mt-3 text-sm sm:text-base">
           <span className="mono-label mr-2">focus:</span>
           <Typed />
         </p>
 
-        <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
           Building and breaking smart contracts — from Hyperledger supply chains to real-time
           exploit detection on EVM.
         </p>
 
-        <div className="mt-9 flex flex-wrap items-center gap-3">
-          <a
-            href="#projects"
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <Link
+            to="/projects"
             className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
           >
-            View Projects <ArrowDown className="h-4 w-4" />
-          </a>
+            View Projects <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            to="/about"
+            className="rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
+          >
+            About
+          </Link>
           <a
             href={RESUME_URL}
             target="_blank"
@@ -78,15 +92,9 @@ export function Hero() {
           >
             Resume
           </a>
-          <a
-            href="#contact"
-            className="rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
-          >
-            Contact
-          </a>
         </div>
 
-        <div className="mt-8 flex items-center gap-4">
+        <div className="mt-10 flex items-center gap-4">
           <a
             href={GITHUB}
             target="_blank"

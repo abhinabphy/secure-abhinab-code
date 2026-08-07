@@ -1,66 +1,106 @@
 import { useMemo, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { Section } from "./Section";
 import { Reveal } from "./Reveal";
-
-// ---------------------------------------------------------------------------
-// Swap these placeholders for real posts — layout below needs no changes.
-// ---------------------------------------------------------------------------
-export type Post = {
-  title: string;
-  excerpt: string;
-  date: string; // ISO date
-  tags: string[];
-  slug: string;
-};
-
-export const POSTS: Post[] = [
-  {
-    title: "Reentrancy Beyond the Classic Pattern",
-    excerpt:
-      "Cross-function and cross-contract reentrancy paths that checks-effects-interactions alone does not close, with a Foundry test harness to catch them.",
-    date: "2025-06-18",
-    tags: ["Security", "Solidity"],
-    slug: "reentrancy-beyond-the-classic-pattern",
-  },
-  {
-    title: "Reading the Mempool for Front-Running Signals",
-    excerpt:
-      "How we score pending transactions in real time, and which heuristics survive contact with production traffic on EVM chains.",
-    date: "2025-03-02",
-    tags: ["Security", "MEV"],
-    slug: "reading-the-mempool",
-  },
-  {
-    title: "Move's Resource Model, From a Solidity Brain",
-    excerpt:
-      "Linear types remove entire vulnerability classes — and introduce new ones. A migration guide for auditors coming from EVM.",
-    date: "2024-11-21",
-    tags: ["Move", "Solidity"],
-    slug: "move-resource-model",
-  },
-  {
-    title: "Practical zk Circuits for Selective Disclosure",
-    excerpt:
-      "Designing Circom circuits that prove a health metric threshold without revealing the metric, and the on-chain commitment scheme behind it.",
-    date: "2024-08-09",
-    tags: ["ZK", "Move"],
-    slug: "practical-zk-selective-disclosure",
-  },
-];
+import { addPost, formatDate, usePosts } from "./posts";
 
 const SORTS = ["Latest", "Oldest", "A–Z"] as const;
 type Sort = (typeof SORTS)[number];
 
-const ALL_TAGS = Array.from(new Set(POSTS.flatMap((p) => p.tags))).sort();
+function AddArticleForm({ onDone }: { onDone: () => void }) {
+  const [title, setTitle] = useState("");
+  const [excerpt, setExcerpt] = useState("");
+  const [tags, setTags] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
+  const [body, setBody] = useState("");
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  const field =
+    "w-full rounded-md border border-border bg-secondary/40 px-3 py-2 font-mono text-xs text-foreground transition-colors focus:border-primary/60";
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!title.trim()) return;
+        addPost({
+          title: title.trim(),
+          excerpt: excerpt.trim() || "No excerpt yet.",
+          date,
+          tags: tags
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean),
+          body: body.trim(),
+        });
+        onDone();
+      }}
+      className="card-surface mb-8 grid gap-3 p-6"
+    >
+      <label className="grid gap-1.5">
+        <span className="mono-label">title</span>
+        <input className={field} value={title} onChange={(e) => setTitle(e.target.value)} required />
+      </label>
+      <label className="grid gap-1.5">
+        <span className="mono-label">excerpt</span>
+        <input className={field} value={excerpt} onChange={(e) => setExcerpt(e.target.value)} />
+      </label>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="grid gap-1.5">
+          <span className="mono-label">tags (comma separated)</span>
+          <input className={field} value={tags} onChange={(e) => setTags(e.target.value)} />
+        </label>
+        <label className="grid gap-1.5">
+          <span className="mono-label">date</span>
+          <input
+            type="date"
+            className={field}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </label>
+      </div>
+      <label className="grid gap-1.5">
+        <span className="mono-label">body</span>
+        <textarea
+          rows={5}
+          className={field}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+      </label>
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="submit"
+          className="rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+        >
+          Publish
+        </button>
+        <button
+          type="button"
+          onClick={onDone}
+          className="rounded-md border border-border px-4 py-2 font-mono text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
+        >
+          cancel
+        </button>
+      </div>
+      <p className="font-mono text-[0.7rem] text-muted-foreground">
+        Drafts are stored in this browser session only.
+      </p>
+    </form>
+  );
 }
 
 export function Articles() {
+  const posts = usePosts();
   const [selected, setSelected] = useState<string[]>([]);
   const [sort, setSort] = useState<Sort>("Latest");
+  const [adding, setAdding] = useState(false);
+
+  const allTags = useMemo(
+    () => Array.from(new Set(posts.flatMap((p) => p.tags))).sort(),
+    [posts],
+  );
 
   const toggle = (tag: string) =>
     setSelected((prev) =>
@@ -70,14 +110,14 @@ export function Articles() {
   const shown = useMemo(() => {
     const filtered =
       selected.length === 0
-        ? POSTS
-        : POSTS.filter((p) => p.tags.some((t) => selected.includes(t)));
+        ? posts
+        : posts.filter((p) => p.tags.some((t) => selected.includes(t)));
     return [...filtered].sort((a, b) => {
       if (sort === "A–Z") return a.title.localeCompare(b.title);
       const diff = new Date(a.date).getTime() - new Date(b.date).getTime();
       return sort === "Oldest" ? diff : -diff;
     });
-  }, [selected, sort]);
+  }, [posts, selected, sort]);
 
   return (
     <Section id="articles" index="04" title="Articles">
@@ -95,7 +135,7 @@ export function Articles() {
           >
             all
           </button>
-          {ALL_TAGS.map((t) => (
+          {allTags.map((t) => (
             <button
               key={t}
               type="button"
@@ -112,22 +152,33 @@ export function Articles() {
           ))}
         </div>
 
-        <label className="flex items-center gap-2">
-          <span className="mono-label">sort</span>
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value as Sort)}
-            aria-label="Sort articles"
-            className="rounded-md border border-border bg-secondary/40 px-2.5 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-primary/50"
+        <div className="flex items-center gap-3">
+          <label className="flex items-center gap-2">
+            <span className="mono-label">sort</span>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as Sort)}
+              aria-label="Sort articles"
+              className="rounded-md border border-border bg-secondary/40 px-2.5 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-primary/50"
+            >
+              {SORTS.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            type="button"
+            onClick={() => setAdding((v) => !v)}
+            className="inline-flex items-center gap-1.5 rounded-md border border-primary/40 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:bg-primary/10"
           >
-            {SORTS.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
-        </label>
+            <Plus className="h-3.5 w-3.5" /> add article
+          </button>
+        </div>
       </div>
+
+      {adding && <AddArticleForm onDone={() => setAdding(false)} />}
 
       {shown.length === 0 ? (
         <p className="card-surface p-8 text-center text-sm text-muted-foreground">
@@ -140,14 +191,23 @@ export function Articles() {
               <Reveal delay={i * 70}>
                 <article className="card-surface flex h-full flex-col p-6">
                   <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
-                    <h3 className="text-lg font-semibold tracking-tight">{p.title}</h3>
-                    <a
-                      href={`/writing/${p.slug}`}
+                    <h3 className="text-lg font-semibold tracking-tight">
+                      <Link
+                        to="/articles/$slug"
+                        params={{ slug: p.slug }}
+                        className="transition-colors hover:text-primary"
+                      >
+                        {p.title}
+                      </Link>
+                    </h3>
+                    <Link
+                      to="/articles/$slug"
+                      params={{ slug: p.slug }}
                       aria-label={`Read ${p.title}`}
                       className="shrink-0 text-muted-foreground transition-colors hover:text-primary"
                     >
                       <ArrowUpRight className="h-5 w-5" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="mono-label mt-1.5">{formatDate(p.date)}</div>
                   <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
