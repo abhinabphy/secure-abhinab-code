@@ -33,6 +33,7 @@ export function Nav() {
         <Link to="/" className="flex min-w-0 items-center gap-2">
           <span className="font-mono text-sm text-primary">~/</span>
           <span className="truncate text-sm font-semibold tracking-tight">abhinab das</span>
+          <span aria-hidden className="terminal-cursor" />
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

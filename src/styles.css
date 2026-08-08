@@ -155,3 +155,21 @@
 @media (prefers-reduced-motion: reduce) {
   .page-enter { animation: none; }
 }
+
+.terminal-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  background-color: var(--primary);
+  animation: terminal-blink 1.6s steps(1, end) infinite;
+}
+
+@keyframes terminal-blink {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor { animation: none; opacity: 1; }
+}

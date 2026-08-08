@@ -5,7 +5,7 @@ import { EMAIL, GITHUB, LINKEDIN, RESUME_URL } from "./data";
 
 export function Contact() {
   return (
-    <Section id="contact" index="08" title="Contact">
+    <Section id="contact" index="05" title="Contact">
       <Reveal>
         <h3 className="max-w-2xl font-serif text-2xl font-normal tracking-tight sm:text-3xl">
           Auditing a protocol, or building one? Let&apos;s talk.
