@@ -11,7 +11,8 @@ export function Footer() {
         </p>
         <div className="flex items-center gap-4">
           <Link
-            to="/contact"
+            to="/about"
+            hash="contact"
             className="font-mono text-xs text-muted-foreground transition-colors hover:text-primary"
           >
             contact

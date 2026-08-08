@@ -4,7 +4,7 @@ import { EDUCATION } from "./data";
 
 export function Education() {
   return (
-    <Section id="education" index="07" title="Education">
+    <Section id="education" index="04" title="Education">
       <Reveal>
         <div className="overflow-hidden rounded-lg border border-border">
           <table className="w-full text-left text-sm">
