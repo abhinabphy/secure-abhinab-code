@@ -5,7 +5,7 @@ export const NAV_LINKS = [
   { to: "/articles", label: "Articles" },
 ] as const;
 
-export { PROJECTS, type ProjectTag } from "@/data/projects";
+export { PROJECTS, type Project } from "@/lib/content";
 
 export const EMAIL = "abhinabiitg@gmail.com";
 export const GITHUB = "https://github.com/";
