@@ -38,17 +38,18 @@ export function About() {
         </Reveal>
 
         <Reveal delay={80}>
-          <figure className="card-surface overflow-hidden p-2">
+          <figure className="card-surface w-full max-w-[18rem] overflow-hidden p-2 sm:max-w-[20rem] lg:max-w-none">
             <img
               src={portrait}
               alt="Portrait of Abhinab Das"
               width={768}
               height={960}
               loading="lazy"
-              className="h-full w-full rounded-md object-cover"
+              className="aspect-[4/5] w-full rounded-md object-cover"
             />
           </figure>
         </Reveal>
+
       </div>
     </Section>
   );
