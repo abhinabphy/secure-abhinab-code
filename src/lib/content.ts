@@ -13,9 +13,9 @@ export type Article = {
 export type Project = {
   title: string;
   date: string;
-  event?: string;
-  badge?: string;
-  excerpt: string;
+  event?: string | undefined;
+  badge?: string | undefined;
+
   tags: string[];
   links: Record<string, string>;
   slug: string;
