@@ -6,7 +6,7 @@ import portrait from "@/assets/abhinab-portrait.jpg";
 export function About() {
   return (
     <Section id="bio" index="01" title="About">
-      <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid items-start gap-10 lg:grid-cols-[1.6fr_minmax(0,0.8fr)]">
         <Reveal>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
