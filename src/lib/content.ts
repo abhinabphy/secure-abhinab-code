@@ -1,4 +1,6 @@
+import "./buffer-polyfill";
 import matter from "gray-matter";
+
 
 export type Article = {
   title: string;
