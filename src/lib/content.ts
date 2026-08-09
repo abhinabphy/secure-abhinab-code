@@ -15,8 +15,9 @@ export type Project = {
   date: string;
   event?: string | undefined;
   badge?: string | undefined;
-
+  excerpt: string;
   tags: string[];
+
   links: Record<string, string>;
   slug: string;
   body: string;
