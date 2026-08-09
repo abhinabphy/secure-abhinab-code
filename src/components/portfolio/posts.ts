@@ -1,4 +1,4 @@
-import { ARTICLES, type Article } from "@/data/articles";
+import { ARTICLES, type Article } from "@/lib/content";
 
 export type Post = Article;
 

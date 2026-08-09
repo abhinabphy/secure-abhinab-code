@@ -6,7 +6,7 @@ import portrait from "@/assets/abhinab-portrait.jpg";
 export function About() {
   return (
     <Section id="bio" index="01" title="About">
-      <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div className="grid items-start gap-10 lg:grid-cols-[1.6fr_minmax(0,0.8fr)]">
         <Reveal>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
@@ -38,17 +38,18 @@ export function About() {
         </Reveal>
 
         <Reveal delay={80}>
-          <figure className="card-surface overflow-hidden p-2">
+          <figure className="card-surface w-full max-w-[18rem] overflow-hidden p-2 sm:max-w-[20rem] lg:max-w-none">
             <img
               src={portrait}
               alt="Portrait of Abhinab Das"
               width={768}
               height={960}
               loading="lazy"
-              className="h-full w-full rounded-md object-cover"
+              className="aspect-[4/5] w-full rounded-md object-cover"
             />
           </figure>
         </Reveal>
+
       </div>
     </Section>
   );
