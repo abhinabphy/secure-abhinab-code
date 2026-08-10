@@ -1,5 +1,4 @@
-import "./buffer-polyfill";
-import matter from "gray-matter";
+import { parseFrontmatter } from "./frontmatter";
 
 
 export type Article = {
