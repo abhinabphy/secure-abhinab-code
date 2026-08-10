@@ -1,5 +1,4 @@
-import "./buffer-polyfill";
-import matter from "gray-matter";
+import { parseFrontmatter } from "./frontmatter";
 
 
 export type Article = {
@@ -58,7 +57,7 @@ function byDateDesc(a: { date: string }, b: { date: string }) {
 
 function parseAll(files: Record<string, string>) {
   return Object.entries(files).map(([path, raw]) => {
-    const { data, content } = matter(raw);
+    const { data, content } = parseFrontmatter(raw);
     return {
       data: data as Record<string, unknown>,
       body: content.trim(),
