@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/portfolio/Page";
+import { Markdown } from "@/components/portfolio/Markdown";
 import { Reveal } from "@/components/portfolio/Reveal";
+
 import { formatDate, usePosts } from "@/components/portfolio/posts";
 
 export const Route = createFileRoute("/articles/$slug")({
