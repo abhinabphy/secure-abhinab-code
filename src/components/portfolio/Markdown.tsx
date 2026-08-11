@@ -61,7 +61,7 @@ export function Markdown({ children }: { children: string }) {
             <td className="border border-border px-3 py-2 align-top">{children}</td>
           ),
           img: ({ src, alt }) => (
-            <figure className="card-surface my-8 overflow-hidden p-2">
+            <span className="card-surface my-8 block overflow-hidden p-2">
               <img
                 src={typeof src === "string" ? src : undefined}
                 alt={alt ?? ""}
@@ -69,9 +69,9 @@ export function Markdown({ children }: { children: string }) {
                 className="w-full rounded-md"
               />
               {alt ? (
-                <figcaption className="mono-label px-1 pb-1 pt-2 text-center">{alt}</figcaption>
+                <span className="mono-label block px-1 pb-1 pt-2 text-center">{alt}</span>
               ) : null}
-            </figure>
+            </span>
           ),
           pre: ({ children }) => (
             <pre className="card-surface my-6 overflow-x-auto p-4 font-mono text-[0.85rem] leading-relaxed">

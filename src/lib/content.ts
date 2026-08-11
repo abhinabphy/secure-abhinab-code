@@ -38,7 +38,7 @@ const projectFiles = import.meta.glob("/src/content/projects/*.md", {
 
 const contentImages = import.meta.glob(
   "/src/content/**/*.{png,jpg,jpeg,webp,gif,svg,avif}",
-  { eager: true, import: "default" },
+  { eager: true, query: "?url", import: "default" },
 ) as Record<string, string>;
 
 function slugFromPath(path: string) {
