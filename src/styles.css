@@ -173,3 +173,28 @@
 @media (prefers-reduced-motion: reduce) {
   .terminal-cursor { animation: none; opacity: 1; }
 }
+
+/* Markdown code highlighting — on-palette terminal theme */
+.markdown-body pre code.hljs { background: transparent; padding: 0; color: var(--foreground); }
+.markdown-body .hljs-comment,
+.markdown-body .hljs-quote { color: color-mix(in oklab, var(--muted-foreground) 85%, transparent); font-style: italic; }
+.markdown-body .hljs-keyword,
+.markdown-body .hljs-selector-tag,
+.markdown-body .hljs-literal,
+.markdown-body .hljs-section,
+.markdown-body .hljs-doctag,
+.markdown-body .hljs-type { color: var(--primary); }
+.markdown-body .hljs-string,
+.markdown-body .hljs-regexp,
+.markdown-body .hljs-addition { color: color-mix(in oklab, var(--primary) 60%, var(--foreground)); }
+.markdown-body .hljs-number,
+.markdown-body .hljs-built_in,
+.markdown-body .hljs-symbol,
+.markdown-body .hljs-attr,
+.markdown-body .hljs-attribute { color: color-mix(in oklab, var(--foreground) 75%, var(--primary)); }
+.markdown-body .hljs-title,
+.markdown-body .hljs-name,
+.markdown-body .hljs-function .hljs-title { color: var(--foreground); font-weight: 600; }
+.markdown-body .hljs-deletion { color: var(--destructive); }
+.markdown-body .hljs-emphasis { font-style: italic; }
+.markdown-body .hljs-strong { font-weight: 700; }

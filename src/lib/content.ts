@@ -84,7 +84,7 @@ function parseAll(files: Record<string, string>) {
     const { data, content } = parseFrontmatter(raw);
     return {
       data: data as Record<string, unknown>,
-      body: content.trim(),
+      body: resolveImages(content.trim(), path),
       slug: (data as Record<string, unknown>)["slug"]
         ? String((data as Record<string, unknown>)["slug"])
         : slugFromPath(path),
