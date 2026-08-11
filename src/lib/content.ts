@@ -36,9 +36,33 @@ const projectFiles = import.meta.glob("/src/content/projects/*.md", {
   import: "default",
 }) as Record<string, string>;
 
+const contentImages = import.meta.glob(
+  "/src/content/**/*.{png,jpg,jpeg,webp,gif,svg,avif}",
+  { eager: true, query: "?url", import: "default" },
+) as Record<string, string>;
+
 function slugFromPath(path: string) {
   return path.split("/").pop()!.replace(/\.md$/, "");
 }
+
+/** Rewrite relative markdown image paths (./x.jpg, x.jpg, ../y.png) to bundled asset URLs. */
+function resolveImages(body: string, mdPath: string) {
+  const dir = mdPath.slice(0, mdPath.lastIndexOf("/"));
+  return body.replace(/(!\[[^\]]*\]\()([^)\s]+)/g, (match, prefix: string, src: string) => {
+    if (/^(https?:|data:|\/)/.test(src)) return match;
+    const parts = `${dir}/${src}`.split("/");
+    const stack: string[] = [];
+    for (const part of parts) {
+      if (part === "." || part === "") continue;
+      if (part === "..") stack.pop();
+      else stack.push(part);
+    }
+    const key = `/${stack.join("/")}`;
+    const resolved = contentImages[key];
+    return resolved ? `${prefix}${resolved}` : match;
+  });
+}
+
 
 function toStringArray(value: unknown): string[] {
   if (Array.isArray(value)) return value.map((v) => String(v));
@@ -60,7 +84,7 @@ function parseAll(files: Record<string, string>) {
     const { data, content } = parseFrontmatter(raw);
     return {
       data: data as Record<string, unknown>,
-      body: content.trim(),
+      body: resolveImages(content.trim(), path),
       slug: (data as Record<string, unknown>)["slug"]
         ? String((data as Record<string, unknown>)["slug"])
         : slugFromPath(path),

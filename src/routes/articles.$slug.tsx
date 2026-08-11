@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/portfolio/Page";
+import { Markdown } from "@/components/portfolio/Markdown";
 import { Reveal } from "@/components/portfolio/Reveal";
+
 import { formatDate, usePosts } from "@/components/portfolio/posts";
 
 export const Route = createFileRoute("/articles/$slug")({
@@ -59,7 +61,7 @@ function ArticleDetail() {
             <div className="mt-10 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p className="text-foreground/90">{post.excerpt}</p>
               {post.body ? (
-                post.body.split("\n").filter(Boolean).map((para, i) => <p key={i}>{para}</p>)
+                <Markdown>{post.body}</Markdown>
               ) : (
                 <p>
                   Full write-up coming soon. This is a placeholder body for the article template —
@@ -67,6 +69,7 @@ function ArticleDetail() {
                 </p>
               )}
             </div>
+
           </Reveal>
         )}
       </article>
