@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as DbgmdRouteImport } from './routes/dbgmd'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ArticlesIndexRouteImport } from './routes/articles.index'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DbgmdRoute = DbgmdRouteImport.update({
+  id: '/dbgmd',
+  path: '/dbgmd',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperienceRoute = ExperienceRouteImport.update({
@@ -50,6 +56,7 @@ const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/dbgmd': typeof DbgmdRoute
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/articles/$slug': typeof ArticlesSlugRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/dbgmd': typeof DbgmdRoute
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/articles/$slug': typeof ArticlesSlugRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/dbgmd': typeof DbgmdRoute
   '/experience': typeof ExperienceRoute
   '/projects': typeof ProjectsRoute
   '/articles/$slug': typeof ArticlesSlugRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/dbgmd'
     | '/experience'
     | '/projects'
     | '/articles/$slug'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/dbgmd'
     | '/experience'
     | '/projects'
     | '/articles/$slug'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/dbgmd'
     | '/experience'
     | '/projects'
     | '/articles/$slug'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  DbgmdRoute: typeof DbgmdRoute
   ExperienceRoute: typeof ExperienceRoute
   ProjectsRoute: typeof ProjectsRoute
   ArticlesSlugRoute: typeof ArticlesSlugRoute
@@ -122,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dbgmd': {
+      id: '/dbgmd'
+      path: '/dbgmd'
+      fullPath: '/dbgmd'
+      preLoaderRoute: typeof DbgmdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/experience': {
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  DbgmdRoute: DbgmdRoute,
   ExperienceRoute: ExperienceRoute,
   ProjectsRoute: ProjectsRoute,
   ArticlesSlugRoute: ArticlesSlugRoute,
