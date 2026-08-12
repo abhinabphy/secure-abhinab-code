@@ -1,4 +1,4 @@
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { defaultUrlTransform } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 
@@ -8,6 +8,7 @@ export function Markdown({ children }: { children: string }) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight]}
+        urlTransform={(url) => (url.startsWith("data:image/") ? url : defaultUrlTransform(url))}
         components={{
           h1: ({ children }) => (
             <h2 className="mt-12 font-serif text-3xl font-normal tracking-tight text-foreground">
