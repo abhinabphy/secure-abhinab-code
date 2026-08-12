@@ -11,4 +11,17 @@ excerpt: temp
 function withdraw() external { uint x = 1; }
 ```
 
-![Architecture](./arch-test.svg)
+![Architecture](./arch-test.jpeg)
+
+Inline `code chip` and a [link](https://example.com).
+
+| col | desc |
+| --- | ---- |
+| a | b |
+
+- item one
+- item two
+
+```ts
+const veryLongLine = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+```
