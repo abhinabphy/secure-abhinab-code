@@ -31,16 +31,26 @@ function Typed() {
 
   useEffect(() => {
     const word = ROTATING[i] ?? "";
+
+    // 1. Finished typing full word -> wait 1.6s before deleting
     if (!del && len === word.length) {
       const t = setTimeout(() => setDel(true), 1600);
       return () => clearTimeout(t);
     }
+
+    // 2. Finished deleting word -> switch to next string
     if (del && len === 0) {
       setDel(false);
       setI((v) => (v + 1) % ROTATING.length);
       return;
     }
-    const t = setTimeout(() => setLen((v) => (del ? -1 : 1)), del ? 35 : 70);
+
+    // 3. Step increment / decrement string length
+    const t = setTimeout(
+      () => setLen((v) => v + (del ? -1 : 1)), // <-- FIX IS HERE
+      del ? 35 : 70
+    );
+
     return () => clearTimeout(t);
   }, [i, len, del]);
 

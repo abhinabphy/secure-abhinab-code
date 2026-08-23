@@ -1,6 +1,5 @@
 import { Section } from "./Section";
 import { Reveal } from "./Reveal";
-import { STATS } from "./data";
 import portrait from "@/assets/abhinab-portrait.jpg";
 
 export function About() {
@@ -27,7 +26,7 @@ export function About() {
             B.Tech, Engineering Physics — IIT Guwahati (2022–2026)
           </p>
 
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:max-w-md">
+          {/* <div className="mt-8 grid grid-cols-2 gap-3 sm:max-w-md">
             {STATS.map((s, i) => (
               <Reveal key={s.label} delay={i * 70}>
                 <div className="card-surface h-full p-4">
@@ -36,7 +35,7 @@ export function About() {
                 </div>
               </Reveal>
             ))}
-          </div>
+          </div> */}
         </Reveal>
 
         <Reveal delay={80}>
