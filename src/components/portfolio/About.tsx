@@ -9,20 +9,22 @@ export function About() {
       <div className="grid items-start gap-10 lg:grid-cols-[1.6fr_minmax(0,0.8fr)]">
         <Reveal>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            <p>
-              I&apos;m an Engineering Physics undergraduate at IIT Guwahati who moved from
-              modelling physical systems to modelling adversarial ones. The same habit —
-              find the assumption that breaks — is what I now apply to smart contracts.
-            </p>
-            <p>
-              I work on Web3 security and blockchain engineering: static and dynamic analysis,
-              fuzzing, and on-chain anomaly detection. I also ship — Hyperledger supply
-              chains, Move protocols and zero-knowledge systems that made it past hackathon
-              judges and into production-shaped deployments.
-            </p>
+           <p>
+  I&apos;m an Engineering Physics undergraduate at IIT Guwahati who moved from
+  modeling physical systems to modeling adversarial ones. The core habit —
+  finding the hidden assumption that breaks a system — is what I now apply 
+  to smart contracts and market mechanics.
+</p>
+<p>
+  My focus bridges Web3 security and protocol engineering: leveraging static and 
+  dynamic analysis, invariant fuzzing, and on-chain anomaly detection to build 
+  code that survives hostile environments. From low-level Solidity and Rust to 
+  Move protocols and zero-knowledge systems, I design contracts built for 
+  production, not just hackathon demos.
+</p>
           </div>
           <p className="mt-6 font-mono text-xs text-muted-foreground">
-            B.Tech, Engineering Physics — IIT Guwahati (2022–Present)
+            B.Tech, Engineering Physics — IIT Guwahati (2022–2026)
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:max-w-md">
