@@ -27,7 +27,7 @@ export function Projects() {
     <section id="projects" className="relative mx-auto max-w-5xl overflow-hidden px-5 pb-24">
       <div
         aria-hidden
-        className="page-glow pointer-events-none absolute inset-x-0 top-0 h-[32rem]"
+        className="page-glow pointer-events-none absolute inset-x-0 top-0 h-[32rem] [mask-image:linear-gradient(to_bottom,black_30%,transparent)]"
       />
 
       <div className="relative">
