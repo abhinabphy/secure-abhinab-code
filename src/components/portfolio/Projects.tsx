@@ -24,20 +24,20 @@ export function Projects() {
     filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.tags.includes(filter));
 
   return (
-    <section id="projects" className="relative mx-auto max-w-5xl overflow-hidden px-5 pb-24">
+    <section id="projects" className="relative isolate mx-auto max-w-5xl overflow-hidden rounded-[2rem] px-5 pb-16 pt-2 sm:rounded-[3rem]">
       <div
         aria-hidden
-        className="page-glow pointer-events-none absolute inset-x-0 top-0 h-[32rem] [mask-image:linear-gradient(to_bottom,black_30%,transparent)]"
+        className="page-glow pointer-events-none absolute inset-4 top-0 h-[30rem] rounded-[3rem] opacity-80 blur-2xl [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_76%)]"
       />
 
       <div className="relative">
         <span className="mono-label text-primary">{"// projects"}</span>
-        <p className="mt-6 max-w-3xl text-2xl leading-relaxed text-foreground/90 sm:text-3xl">
+        <p className="mt-5 max-w-3xl text-2xl leading-relaxed text-foreground/90 sm:text-3xl">
           Some projects I&apos;ve built with real users in mind, some at hackathons, and some
           for pure joy. I learnt something every time.
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+        <div className="mt-7 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
           {filters.map((f) => (
             <button
               key={f}
@@ -60,13 +60,13 @@ export function Projects() {
             no projects match this filter yet.
           </p>
         ) : (
-          <div className="mt-8 divide-y divide-border">
+          <div className="mt-5 divide-y divide-border">
             {shown.map((p, i) => {
               const primaryLink = Object.values(p.links)[0];
               const host = linkHost(primaryLink);
               return (
                 <Reveal key={p.slug} delay={i * 60}>
-                  <article className="grid gap-6 py-12 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-14">
+                  <article className="grid gap-5 py-8 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
                     <div className="flex items-start gap-5">
                       <div
                         aria-hidden
