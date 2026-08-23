@@ -1,94 +1,87 @@
-import { useEffect, useState } from "react";
+import {
+  BriefcaseBusiness,
+  Download,
+  FileText,
+  FolderKanban,
+  Github,
+  House,
+  Linkedin,
+  Mail,
+  Sun,
+  UserRound,
+  X as XIcon,
+} from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { NAV_LINKS, RESUME_URL } from "./data";
+import { EMAIL, GITHUB, LINKEDIN, NAV_LINKS, RESUME_URL } from "./data";
+
+const NAV_ICONS = {
+  "/about": UserRound,
+  "/experience": BriefcaseBusiness,
+  "/projects": FolderKanban,
+  "/articles": FileText,
+} as const;
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "border-border bg-background/85 py-2 backdrop-blur-xl"
-          : "border-transparent bg-transparent py-4"
-      }`}
-    >
+    <header className="fixed inset-x-0 bottom-5 z-50 flex justify-center px-4 sm:bottom-7">
       <nav
         aria-label="Main"
-        className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5"
+        className="flex w-fit max-w-full items-center gap-1 rounded-full border border-[#a7c891]/20 bg-[#171916]/90 p-1.5 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl sm:gap-1.5 sm:p-2"
       >
-        <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="font-mono text-sm text-primary">~/</span>
-          <span className="truncate text-sm font-semibold tracking-tight">abhinab das</span>
-          <span aria-hidden className="terminal-cursor" />
+        <Link
+          to="/"
+          aria-label="Home"
+          title="Home"
+          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors sm:h-10 sm:w-10 ${
+            pathname === "/"
+              ? "bg-[#a7c891] text-[#182017]"
+              : "text-[#b8b3ae] hover:bg-[#a7c891]/10 hover:text-[#c9dfba]"
+          }`}
+        >
+          <House className="h-[17px] w-[17px]" />
         </Link>
-
-        <ul className="hidden items-center gap-1 md:flex">
-          {NAV_LINKS.map((s) => (
-            <li key={s.to}>
-              <Link
-                to={s.to}
-                activeProps={{ className: "text-primary" }}
-                inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
-                className="rounded-md px-3 py-1.5 font-mono text-xs tracking-wide transition-colors"
-              >
-                {s.label.toLowerCase()}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex shrink-0 items-center gap-2">
-          <a
-            href={RESUME_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-md border border-primary/40 px-3 py-1.5 font-mono text-xs text-primary transition-colors hover:bg-primary/10"
-          >
-            resume
-          </a>
-          <button
-            type="button"
-            aria-label="Toggle navigation"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-            className="rounded-md border border-border px-3 py-1.5 font-mono text-xs md:hidden"
-          >
-            {open ? "close" : "menu"}
-          </button>
-        </div>
+        {NAV_LINKS.map((item) => {
+          const Icon = NAV_ICONS[item.to];
+          const active = pathname === item.to || pathname.startsWith(`${item.to}/`);
+          return (
+            <Link
+              key={item.to}
+              to={item.to}
+              aria-label={item.label}
+              title={item.label}
+              className={`flex h-9 w-9 items-center justify-center rounded-full transition-all sm:h-10 sm:w-10 ${
+                active
+                  ? "bg-[#a7c891] text-[#182017]"
+                  : "text-[#b8b3ae] hover:-translate-y-0.5 hover:bg-[#a7c891]/10 hover:text-[#c9dfba]"
+              }`}
+            >
+              <Icon className="h-[17px] w-[17px]" />
+            </Link>
+          );
+        })}
+        <span aria-hidden className="mx-0.5 h-5 w-px bg-[#d9adbd]/20 sm:mx-1 sm:h-6" />
+        <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-icon">
+          <Github />
+        </a>
+        <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-icon">
+          <Linkedin />
+        </a>
+        <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-icon">
+          <XIcon />
+        </a>
+        <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email" className="dock-icon">
+          <Mail />
+        </a>
+        <a href={RESUME_URL} target="_blank" rel="noreferrer" aria-label="Resume" title="Resume" className="dock-icon text-[#c9dfba]">
+          <Download />
+        </a>
+        <span aria-hidden className="mx-0.5 h-5 w-px bg-[#d9adbd]/20 sm:mx-1 sm:h-6" />
+        <button type="button" aria-label="Color theme" title="Color theme" className="dock-icon text-[#d9adbd]">
+          <Sun />
+        </button>
       </nav>
-
-      {open && (
-        <ul className="mx-auto mt-3 grid max-w-6xl grid-cols-2 gap-1 border-t border-border bg-background/95 px-5 pb-3 pt-3 backdrop-blur-xl md:hidden">
-          {NAV_LINKS.map((s) => (
-            <li key={s.to}>
-              <Link
-                to={s.to}
-                onClick={() => setOpen(false)}
-                activeProps={{ className: "text-primary" }}
-                inactiveProps={{ className: "text-muted-foreground hover:text-foreground" }}
-                className="block rounded-md px-3 py-2 font-mono text-xs"
-              >
-                {s.label.toLowerCase()}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
     </header>
   );
 }

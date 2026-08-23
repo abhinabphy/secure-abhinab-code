@@ -19,14 +19,6 @@ export const STATS = [
 
 export const EXPERIENCE = [
   {
-    org: "SentielX.Solutions",
-    role: "Web3 Security Researcher",
-    period: "Apr 2025 — Ongoing",
-    location: "Remote",
-    current: true,
-    body: "Real-time protection layer for smart contracts: automated static and dynamic analysis, runtime monitoring, mempool scanning for front-running detection, and on-chain anomaly detection to safeguard dApps from exploits and vulnerabilities.",
-  },
-  {
     org: "IQApex Labs",
     role: "Blockchain Developer Intern",
     period: "May 2024 — Jul 2024",

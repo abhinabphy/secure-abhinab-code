@@ -64,16 +64,21 @@
     border-color: var(--color-border);
   }
 
-  html {
+    html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
   }
 
   body {
     background-color: var(--color-background);
+    background-image:
+      radial-gradient(ellipse 55% 80% at 0% 20%, oklch(0.42 0.08 150 / 18%), transparent 72%),
+      radial-gradient(ellipse 58% 80% at 100% 30%, oklch(0.28 0.045 10 / 20%), transparent 72%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    padding-bottom: 6rem;
   }
 
   ::selection {
@@ -130,6 +135,28 @@
   &:hover {
     text-decoration-color: var(--primary);
   }
+}
+
+.dock-icon {
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: #b8b3ae;
+  transition: all 0.2s ease;
+}
+
+.dock-icon svg {
+  height: 1.0625rem;
+  width: 1.0625rem;
+}
+
+.dock-icon:hover {
+  transform: translateY(-2px);
+  background: color-mix(in oklab, var(--primary) 10%, transparent);
+  color: #c9dfba;
 }
 
 @utility card-surface {

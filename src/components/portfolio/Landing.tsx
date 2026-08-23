@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Mail } from "lucide-react";
-import { EMAIL, GITHUB, LINKEDIN } from "./data";
 import portrait from "@/assets/abhinab-portrait.jpg";
 
 const ROTATING = [
@@ -69,7 +67,7 @@ function Portrait({ className = "" }: { className?: string }) {
 
 export function Landing() {
   return (
-    <section id="top" className="relative overflow-hidden px-5 pb-24 pt-32 sm:pt-40">
+    <section id="top" className="relative overflow-hidden px-5 pb-40 pt-20 sm:pt-28">
       <div aria-hidden className="page-glow pointer-events-none absolute inset-0" />
       <div
         aria-hidden
@@ -91,11 +89,8 @@ export function Landing() {
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
-                Currently a Web3 security researcher at{" "}
-                <Link to="/experience" className="prose-link">
-                  SentielX Solutions
-                </Link>
-                , building real-time protection layers that keep dApps safe from exploits.
+                I build and break smart contracts — from Hyperledger supply chains to
+                real-time exploit detection on EVM. <Link to="/experience" className="prose-link">See my work</Link>.
               </p>
               <p>
                 I study Engineering Physics at{" "}
@@ -136,33 +131,6 @@ export function Landing() {
               </ul>
             </div>
 
-            <div className="mt-12 flex items-center gap-4">
-              <a
-                href={GITHUB}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub profile"
-                className="text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href={LINKEDIN}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn profile"
-                className="text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href={`mailto:${EMAIL}`}
-                aria-label="Email Abhinab Das"
-                className="text-muted-foreground transition-colors hover:text-primary"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
           <Portrait className="hidden lg:mt-52 lg:block" />

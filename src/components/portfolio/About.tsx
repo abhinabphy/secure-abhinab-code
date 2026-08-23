@@ -15,8 +15,8 @@ export function About() {
               find the assumption that breaks — is what I now apply to smart contracts.
             </p>
             <p>
-              Today I research Web3 security: static and dynamic analysis, fuzzing, mempool
-              monitoring and on-chain anomaly detection. I also ship — Hyperledger supply
+              I work on Web3 security and blockchain engineering: static and dynamic analysis,
+              fuzzing, and on-chain anomaly detection. I also ship — Hyperledger supply
               chains, Move protocols and zero-knowledge systems that made it past hackathon
               judges and into production-shaped deployments.
             </p>
