@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
+import { Mail } from "lucide-react";
 import portrait from "@/assets/abhinab-portrait.jpg";
+import { EMAIL, STATS } from "./data";
 
 const ROTATING = [
   "breaking smart contracts",
@@ -38,7 +40,7 @@ function Typed() {
       setI((v) => (v + 1) % ROTATING.length);
       return;
     }
-    const t = setTimeout(() => setLen((v) => v + (del ? -1 : 1)), del ? 35 : 70);
+    const t = setTimeout(() => setLen((v) => (del ? -1 : 1)), del ? 35 : 70);
     return () => clearTimeout(t);
   }, [i, len, del]);
 
@@ -67,7 +69,7 @@ function Portrait({ className = "" }: { className?: string }) {
 
 export function Landing() {
   return (
-    <section id="top" className="relative overflow-hidden px-5 pb-40 pt-20 sm:pt-28">
+    <section id="top" className="relative overflow-hidden px-5 pb-40 pt-20 sm:pt-24">
       <div aria-hidden className="page-glow pointer-events-none absolute inset-0" />
       <div
         aria-hidden
@@ -89,11 +91,7 @@ export function Landing() {
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
-                I build and break smart contracts — from Hyperledger supply chains to
-                real-time exploit detection on EVM. <Link to="/experience" className="prose-link">See my work</Link>.
-              </p>
-              <p>
-                I study Engineering Physics at{" "}
+                I&apos;m an Engineering Physics undergraduate at{" "}
                 <a
                   href="https://www.iitg.ac.in/"
                   target="_blank"
@@ -101,14 +99,37 @@ export function Landing() {
                   className="prose-link"
                 >
                   IIT Guwahati
-                </a>
-                , where I moved from modelling physical systems to modelling adversarial ones.
-                I&apos;ve shipped{" "}
-                <Link to="/projects" className="prose-link">
-                  Hyperledger supply chains, Move protocols and zero-knowledge systems
-                </Link>{" "}
-                that made it past hackathon judges and into production-shaped deployments.
+                </a>{" "}
+                who moved from modelling physical systems to modelling adversarial ones. The
+                same habit — find the assumption that breaks — is what I now apply to smart
+                contracts.
               </p>
+              <p>
+                I work on Web3 security and blockchain engineering: static and dynamic
+                analysis, fuzzing, and on-chain anomaly detection. I also ship — Hyperledger
+                supply chains, Move protocols and zero-knowledge systems that made it past
+                hackathon judges and into production-shaped deployments.{" "}
+                <Link to="/projects" className="prose-link">
+                  See my projects
+                </Link>{" "}
+                and{" "}
+                <Link to="/experience" className="prose-link">
+                  experience
+                </Link>
+                .
+              </p>
+              <p className="font-mono text-xs text-muted-foreground">
+                B.Tech, Engineering Physics — IIT Guwahati (2022–Present)
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:max-w-md">
+              {STATS.map((s, i) => (
+                <div key={s.label} className="card-surface p-4" style={{ transitionDelay: `${i * 70}ms` }}>
+                  <div className="text-xl font-semibold text-primary">{s.value}</div>
+                  <div className="mono-label mt-1.5 block">{s.label}</div>
+                </div>
+              ))}
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-7 sm:grid-cols-4">
@@ -131,6 +152,31 @@ export function Landing() {
               </ul>
             </div>
 
+            <div className="mt-16">
+              <h2 className="max-w-2xl font-serif text-2xl font-normal tracking-tight sm:text-3xl">
+                Auditing a protocol, or building one? Let&apos;s talk.
+              </h2>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02]"
+                >
+                  <Mail className="h-4 w-4" /> {EMAIL}
+                </a>
+                <Link
+                  to="/experience"
+                  className="rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
+                >
+                  Experience
+                </Link>
+                <Link
+                  to="/projects"
+                  className="rounded-md border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary/60 hover:text-primary"
+                >
+                  Projects
+                </Link>
+              </div>
+            </div>
           </div>
 
           <Portrait className="hidden lg:mt-52 lg:block" />

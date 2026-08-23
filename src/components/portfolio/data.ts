@@ -1,5 +1,4 @@
 export const NAV_LINKS = [
-  { to: "/about", label: "About" },
   { to: "/experience", label: "Experience" },
   { to: "/projects", label: "Projects" },
   { to: "/articles", label: "Articles" },

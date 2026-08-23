@@ -8,14 +8,12 @@ import {
   Linkedin,
   Mail,
   Sun,
-  UserRound,
   X as XIcon,
 } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { EMAIL, GITHUB, LINKEDIN, NAV_LINKS, RESUME_URL } from "./data";
 
 const NAV_ICONS = {
-  "/about": UserRound,
   "/experience": BriefcaseBusiness,
   "/projects": FolderKanban,
   "/articles": FileText,
