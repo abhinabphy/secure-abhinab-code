@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero } from "@/components/portfolio/Hero";
+import { Landing } from "@/components/portfolio/Landing";
 
 const TITLE = "Abhinab Das — DeFi Engineer & Web3 Security Researcher";
 const DESCRIPTION =

@@ -107,6 +107,31 @@
   background-size: 28px 28px;
 }
 
+@utility page-glow {
+  background-image:
+    radial-gradient(
+      ellipse 55% 45% at 12% 0%,
+      color-mix(in oklab, var(--primary) 9%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 88% 18%,
+      oklch(0.62 0.11 45 / 7%),
+      transparent 70%
+    );
+}
+
+@utility prose-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklab, var(--primary) 40%, transparent);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+  &:hover {
+    text-decoration-color: var(--primary);
+  }
+}
+
 @utility card-surface {
   border: 1px solid var(--border);
   background: color-mix(in oklab, var(--surface) 70%, transparent);
