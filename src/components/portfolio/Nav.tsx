@@ -58,21 +58,14 @@ export function Nav() {
     <header className="fixed inset-x-0 bottom-5 z-50 flex justify-center px-4 sm:bottom-7">
       <nav
         aria-label="Main"
-        className="flex w-fit max-w-full items-center gap-1.5 rounded-full border p-2 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:gap-2 sm:p-2.5"
+        className="dock-shell flex w-fit max-w-full items-center gap-0.5 rounded-[1.4rem] border px-2.5 py-2 backdrop-blur-2xl sm:gap-1 sm:px-3"
         style={{
           backgroundColor: "var(--dock-bg)",
           borderColor: "var(--dock-border)",
         }}
       >
-        {/* Site navigation group: Home, Experience, Projects, Articles */}
-        <Link
-          to="/"
-          aria-label="Home"
-          title="Home"
-          data-active={pathname === "/"}
-          className="dock-item"
-        >
-          <House strokeWidth={1.75} />
+        <Link to="/" aria-label="Home" title="Home" data-active={pathname === "/"} className="dock-item">
+          <House strokeWidth={1.6} />
         </Link>
         {NAV_LINKS.map((item) => {
           const Icon = NAV_ICONS[item.to];
@@ -86,14 +79,13 @@ export function Nav() {
               data-active={active}
               className="dock-item"
             >
-              <Icon strokeWidth={1.75} />
+              <Icon strokeWidth={1.6} />
             </Link>
           );
         })}
 
         <span aria-hidden className="dock-divider" />
 
-        {/* Resume / download */}
         <a
           href={RESUME_URL}
           target="_blank"
@@ -102,28 +94,26 @@ export function Nav() {
           title="Resume"
           className="dock-item"
         >
-          <Download strokeWidth={1.75} />
+          <Download strokeWidth={1.6} />
         </a>
 
         <span aria-hidden className="dock-divider" />
 
-        {/* Social cluster: GitHub, LinkedIn, X, Email */}
         <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-item">
-          <Github strokeWidth={1.75} />
+          <Github strokeWidth={1.6} />
         </a>
         <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-item">
-          <Linkedin strokeWidth={1.75} />
+          <Linkedin strokeWidth={1.6} />
         </a>
         <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-item">
-          <XIcon strokeWidth={1.75} />
+          <XIcon strokeWidth={1.6} />
         </a>
         <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email" className="dock-item">
-          <Mail strokeWidth={1.75} />
+          <Mail strokeWidth={1.6} />
         </a>
 
         <span aria-hidden className="dock-divider" />
 
-        {/* Theme toggle */}
         <button
           type="button"
           onClick={toggleTheme}
@@ -131,7 +121,7 @@ export function Nav() {
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           className="dock-item"
         >
-          {theme === "dark" ? <Sun strokeWidth={1.75} /> : <Moon strokeWidth={1.75} />}
+          {theme === "dark" ? <Sun strokeWidth={1.6} /> : <Moon strokeWidth={1.6} />}
         </button>
       </nav>
     </header>
