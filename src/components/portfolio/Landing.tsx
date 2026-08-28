@@ -71,14 +71,13 @@ function Typed() {
 
 function Portrait({ className = "" }: { className?: string }) {
   return (
-    <figure className={`overflow-hidden rounded-2xl border border-border ${className}`}>
+    <figure className={`portrait-card ${className}`}>
       <img
         src={portrait}
         alt="Portrait of Abhinab Das"
         width={768}
         height={960}
         loading="lazy"
-        className="aspect-[4/5] w-full object-cover"
       />
     </figure>
   );
@@ -104,7 +103,7 @@ export function Landing() {
               I love <Typed />
             </p>
 
-            <Portrait className="mt-10 max-w-sm lg:hidden" />
+            <Portrait className="mt-10 max-w-xs lg:hidden aspect-[3/4]" />
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
@@ -179,7 +178,7 @@ export function Landing() {
             </div>
           </div>
 
-          <Portrait className="hidden lg:block lg:mt-0 lg:max-h-[620px]" />
+          <Portrait className="hidden lg:block lg:mt-0 lg:max-h-[520px] lg:aspect-[3/4]" />
         </div>
       </div>
     </section>

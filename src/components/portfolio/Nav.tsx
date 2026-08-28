@@ -58,25 +58,21 @@ export function Nav() {
     <header className="fixed inset-x-0 bottom-5 z-50 flex justify-center px-4 sm:bottom-7">
       <nav
         aria-label="Main"
-        className="flex w-fit max-w-full items-center gap-1 rounded-full border p-1.5 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:gap-1.5 sm:p-2"
+        className="flex w-fit max-w-full items-center gap-1.5 rounded-full border p-2 shadow-[0_18px_60px_-24px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:gap-2 sm:p-2.5"
         style={{
           backgroundColor: "var(--dock-bg)",
           borderColor: "var(--dock-border)",
         }}
       >
-        {/* Site navigation group */}
+        {/* Site navigation group: Home, Experience, Projects, Articles */}
         <Link
           to="/"
           aria-label="Home"
           title="Home"
-          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors sm:h-10 sm:w-10 ${
-            pathname === "/"
-              ? "text-[var(--dock-active-fg)]"
-              : "text-[var(--dock-icon)] hover:text-[var(--dock-hover-fg)]"
-          }`}
-          style={pathname === "/" ? { backgroundColor: "var(--dock-active-bg)" } : undefined}
+          data-active={pathname === "/"}
+          className="dock-item"
         >
-          <House className="h-[17px] w-[17px]" strokeWidth={1.75} />
+          <House strokeWidth={1.75} />
         </Link>
         {NAV_LINKS.map((item) => {
           const Icon = NAV_ICONS[item.to];
@@ -87,35 +83,42 @@ export function Nav() {
               to={item.to}
               aria-label={item.label}
               title={item.label}
-              className={`flex h-9 w-9 items-center justify-center rounded-full transition-all sm:h-10 sm:w-10 ${
-                active
-                  ? "text-[var(--dock-active-fg)]"
-                  : "text-[var(--dock-icon)] hover:-translate-y-0.5 hover:text-[var(--dock-hover-fg)]"
-              }`}
-              style={active ? { backgroundColor: "var(--dock-active-bg)" } : undefined}
+              data-active={active}
+              className="dock-item"
             >
-              <Icon className="h-[17px] w-[17px]" strokeWidth={1.75} />
+              <Icon strokeWidth={1.75} />
             </Link>
           );
         })}
 
         <span aria-hidden className="dock-divider" />
 
-        {/* External social group */}
-        <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-icon">
+        {/* Resume / download */}
+        <a
+          href={RESUME_URL}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Resume"
+          title="Resume"
+          className="dock-item"
+        >
+          <Download strokeWidth={1.75} />
+        </a>
+
+        <span aria-hidden className="dock-divider" />
+
+        {/* Social cluster: GitHub, LinkedIn, X, Email */}
+        <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-item">
           <Github strokeWidth={1.75} />
         </a>
-        <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-icon">
+        <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-item">
           <Linkedin strokeWidth={1.75} />
         </a>
-        <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-icon">
+        <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-item">
           <XIcon strokeWidth={1.75} />
         </a>
-        <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email" className="dock-icon">
+        <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email" className="dock-item">
           <Mail strokeWidth={1.75} />
-        </a>
-        <a href={RESUME_URL} target="_blank" rel="noreferrer" aria-label="Resume" title="Resume" className="dock-icon">
-          <Download strokeWidth={1.75} />
         </a>
 
         <span aria-hidden className="dock-divider" />
@@ -126,13 +129,9 @@ export function Nav() {
           onClick={toggleTheme}
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          className="dock-icon"
+          className="dock-item"
         >
-          {theme === "dark" ? (
-            <Sun className="h-[17px] w-[17px]" strokeWidth={1.75} />
-          ) : (
-            <Moon className="h-[17px] w-[17px]" strokeWidth={1.75} />
-          )}
+          {theme === "dark" ? <Sun strokeWidth={1.75} /> : <Moon strokeWidth={1.75} />}
         </button>
       </nav>
     </header>
