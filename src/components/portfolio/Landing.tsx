@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
 import portrait from "@/assets/abhinab-portrait.jpg";
-import { EMAIL, STATS } from "./data";
+import { EMAIL } from "./data";
 
 const ROTATING = [
   "breaking smart contracts",
@@ -28,25 +28,42 @@ function Typed() {
   const [i, setI] = useState(0);
   const [len, setLen] = useState(0);
   const [del, setDel] = useState(false);
+  const mounted = useRef(true);
+
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
 
   useEffect(() => {
     const word = ROTATING[i] ?? "";
-    if (!del && len === word.length) {
-      const t = setTimeout(() => setDel(true), 1600);
+    if (!del && len >= word.length) {
+      const t = setTimeout(() => {
+        if (mounted.current) setDel(true);
+      }, 1600);
       return () => clearTimeout(t);
     }
-    if (del && len === 0) {
-      setDel(false);
-      setI((v) => (v + 1) % ROTATING.length);
-      return;
+    if (del && len <= 0) {
+      const t = setTimeout(() => {
+        if (!mounted.current) return;
+        setDel(false);
+        setI((v) => (v + 1) % ROTATING.length);
+      }, 200);
+      return () => clearTimeout(t);
     }
-    const t = setTimeout(() => setLen((v) => (del ? -1 : 1)), del ? 35 : 70);
+    const t = setTimeout(() => {
+      if (!mounted.current) return;
+      setLen((v) => v + (del ? -1 : 1));
+    }, del ? 35 : 70);
     return () => clearTimeout(t);
   }, [i, len, del]);
 
+  const word = ROTATING[i] ?? "";
   return (
     <span className="font-serif italic text-primary">
-      {(ROTATING[i] ?? "").slice(0, len)}
+      {word.slice(0, len)}
       <span className="ml-0.5 inline-block h-[0.9em] w-[2px] translate-y-[2px] bg-primary align-middle motion-safe:animate-pulse" />
     </span>
   );
@@ -108,28 +125,11 @@ export function Landing() {
                 I work on Web3 security and blockchain engineering: static and dynamic
                 analysis, fuzzing, and on-chain anomaly detection. I also ship — Hyperledger
                 supply chains, Move protocols and zero-knowledge systems that made it past
-                hackathon judges and into production-shaped deployments.{" "}
-                <Link to="/projects" className="prose-link">
-                  See my projects
-                </Link>{" "}
-                and{" "}
-                <Link to="/experience" className="prose-link">
-                  experience
-                </Link>
-                .
+                hackathon judges and into production-shaped deployments.
               </p>
               <p className="font-mono text-xs text-muted-foreground">
                 B.Tech, Engineering Physics — IIT Guwahati (2022–Present)
               </p>
-            </div>
-
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:max-w-md">
-              {STATS.map((s, i) => (
-                <div key={s.label} className="card-surface p-4" style={{ transitionDelay: `${i * 70}ms` }}>
-                  <div className="text-xl font-semibold text-primary">{s.value}</div>
-                  <div className="mono-label mt-1.5 block">{s.label}</div>
-                </div>
-              ))}
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-7 sm:grid-cols-4">
@@ -145,7 +145,7 @@ export function Landing() {
               <h2 className="text-lg font-semibold tracking-tight">
                 Some things I&apos;m interested in:
               </h2>
-              <ul className="mt-5 list-disc space-y-2.5 pl-5 leading-relaxed text-muted-foreground marker:text-primary">
+              <ul className="mt-5 list-disc space-y-2.5 pl-5 text-base leading-relaxed text-foreground/80 marker:text-primary sm:text-lg">
                 {INTERESTS.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -179,7 +179,7 @@ export function Landing() {
             </div>
           </div>
 
-          <Portrait className="hidden lg:mt-52 lg:block" />
+          <Portrait className="hidden lg:block lg:mt-0 lg:max-h-[620px]" />
         </div>
       </div>
     </section>

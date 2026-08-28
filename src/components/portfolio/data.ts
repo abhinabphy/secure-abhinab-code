@@ -11,11 +11,6 @@ export const GITHUB = "https://github.com/";
 export const LINKEDIN = "https://www.linkedin.com/";
 export const RESUME_URL = "/resume.pdf";
 
-export const STATS = [
-  { value: "6+", label: "Hackathon Wins" },
-  { value: "5+", label: "Chains Worked On" },
-];
-
 export const EXPERIENCE = [
   {
     org: "IQApex Labs",
