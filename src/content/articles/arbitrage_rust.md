@@ -2,7 +2,7 @@
 title: Detecting Arbitrage Opportunities
 date: "2025-02-11"
 tags: [security, solidity]
-excerpt: Detecting DeFi arbitrage as negative cycles in a log-weighted AMM graph
+excerpt: Detecting DeFi arbitrage as negative cycles in a log-weighted AMM graph using Bellman-Ford Negative Cycle search method.
 ---
 
 

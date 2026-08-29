@@ -5,9 +5,10 @@ import portrait from "@/assets/abhinab-portrait.jpg";
 import { EMAIL } from "./data";
 
 const ROTATING = [
-  "breaking smart contracts",
-  "building DeFi rails",
-  "zero-knowledge systems",
+  "engineering quantitative DeFi rails",
+  "optimizing low-level EVM execution",
+  "building secure Rust & Solidity protocols",
+  "fuzzing smart contract invariants",
 ];
 
 const LANDING_STATS = [
@@ -18,10 +19,10 @@ const LANDING_STATS = [
 ];
 
 const INTERESTS = [
-  "smart contract security and adversarial systems",
-  "zero-knowledge proofs and privacy-preserving protocols",
-  "mempool monitoring and on-chain anomaly detection",
-  "DeFi infrastructure and blockchain engineering",
+  "quantitative DeFi and on-chain order flow mechanics",
+  "EVM assembly (Yul), gas optimization, and state access",
+  "protocol security, invariant testing, and ZK primitives",
+  "analyzing tactical football mechanics and solving detective novels",
 ];
 
 function Typed() {
@@ -107,28 +108,27 @@ export function Landing() {
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
-                I&apos;m an Engineering Physics undergraduate at{" "}
-                <a
-                  href="https://www.iitg.ac.in/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="prose-link"
-                >
-                  IIT Guwahati
-                </a>{" "}
-                who moved from modelling physical systems to modelling adversarial ones. The
-                same habit — find the assumption that breaks — is what I now apply to smart
-                contracts.
-              </p>
-              <p>
-                I work on Web3 security and blockchain engineering: static and dynamic
-                analysis, fuzzing, and on-chain anomaly detection. I also ship — Hyperledger
-                supply chains, Move protocols and zero-knowledge systems that made it past
-                hackathon judges and into production-shaped deployments.
-              </p>
-              <p className="font-mono text-xs text-muted-foreground">
-                B.Tech, Engineering Physics — IIT Guwahati (2022–Present)
-              </p>
+  I study Engineering Physics at{" "}
+  <a
+    href="https://www.iitg.ac.in/"
+    target="_blank"
+    rel="noreferrer"
+    className="prose-link"
+  >
+    IIT Guwahati
+  </a>
+  , where I moved from modeling physical systems to modeling adversarial ones —
+  AMM mechanics, liquidity pricing, and block-by-block order flow. The habit of
+  hunting down the subtle assumption that breaks a physical model turned out to
+  be the exact same skill needed for smart contracts.
+</p>
+<p>
+  My focus sits at the intersection of quantitative DeFi and Web3 security:
+  writing low-level Solidity and Rust built to handle toxic order flow and hostile
+  mempools. Having won major hackathons shipping ZK and Move systems, I keep that
+  same bias for shipping fast, but always anchored in building battle-tested code
+  that survives in production.
+</p>
             </div>
 
             <div className="mt-12 grid grid-cols-2 gap-6 border-t border-border pt-7 sm:grid-cols-4">

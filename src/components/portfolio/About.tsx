@@ -10,17 +10,20 @@ export function About() {
         <Reveal>
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
            <p>
-  I&apos;m an Engineering Physics undergraduate at IIT Guwahati who moved from
-  modeling physical systems to modeling adversarial ones. The core habit —
-  finding the hidden assumption that breaks a system — is what I now apply 
-  to smart contracts and market mechanics.
+ <p>
+  I study Engineering Physics at IIT Guwahati, where I moved from modeling 
+  physical systems to modeling adversarial ones — AMM mechanics, liquidity 
+  pricing, and block-by-block order flow. The habit of hunting down the subtle 
+  assumption that breaks a physical model turned out to be the exact same 
+  skill needed for smart contracts.
 </p>
 <p>
-  My focus bridges Web3 security and protocol engineering: leveraging static and 
-  dynamic analysis, invariant fuzzing, and on-chain anomaly detection to build 
-  code that survives hostile environments. From low-level Solidity and Rust to 
-  Move protocols and zero-knowledge systems, I design contracts built for 
-  production, not just hackathon demos.
+  My work focuses on the intersection of quantitative DeFi and Web3 security: 
+  writing low-level Solidity and Rust built to handle toxic order flow and hostile 
+  mempools. Having won major hackathons shipping ZK and Move systems, I keep 
+  that same bias for shipping fast, but always anchored in building battle-tested 
+  code that survives in production.
+</p>
 </p>
           </div>
           <p className="mt-6 font-mono text-xs text-muted-foreground">
