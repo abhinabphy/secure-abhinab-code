@@ -86,7 +86,7 @@ function Portrait({ className = "" }: { className?: string }) {
 
 export function Landing() {
   return (
-    <section id="top" className="relative overflow-hidden px-5 pb-32 pt-20 sm:pt-24">
+    <section id="top" className="relative overflow-hidden px-5 pb-44 pt-20 sm:pt-24">
       <div aria-hidden className="page-glow pointer-events-none absolute inset-0" />
       <div
         aria-hidden
@@ -94,7 +94,7 @@ export function Landing() {
       />
 
       <div className="relative mx-auto max-w-5xl">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+        <div className="grid items-stretch gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
           <div>
             <h1 className="text-5xl font-normal tracking-tight sm:text-6xl">
               Hi, I&apos;m <span className="font-serif italic text-primary">Abhinab</span>
@@ -178,7 +178,7 @@ export function Landing() {
             </div>
           </div>
 
-          <Portrait className="hidden w-full max-w-[280px] aspect-[3/4] lg:mt-0 lg:block" />
+          <Portrait className="hidden w-full lg:mt-0 lg:block lg:h-full lg:min-h-0" />
         </div>
       </div>
     </section>
