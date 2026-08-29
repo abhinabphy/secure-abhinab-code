@@ -296,10 +296,8 @@
 .portrait-card {
   position: relative;
   border: 1px solid color-mix(in oklab, var(--primary) 22%, var(--border));
-  border-radius: var(--radius-2xl);
+  border-radius: 20px;
   overflow: hidden;
-  height: 100%;
-  min-height: 0;
   box-shadow:
     0 0 0 1px color-mix(in oklab, var(--primary) 8%, transparent),
     0 20px 60px -30px color-mix(in oklab, var(--primary) 35%, transparent);
@@ -311,15 +309,6 @@
   object-fit: cover;
   object-position: center 12%;
   filter: saturate(0.92) sepia(0.08) brightness(0.97);
-}
-
-.interest-card {
-  background: color-mix(in oklab, var(--surface) 40%, transparent);
-}
-
-.interest-card:hover {
-  border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
-  background: color-mix(in oklab, var(--primary) 5%, transparent);
 }
 
 .portrait-card::after {

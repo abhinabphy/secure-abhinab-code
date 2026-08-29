@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import {
   BriefcaseBusiness,
-  Download,
-  FileText,
-  FolderKanban,
+  FileUser,
+  FolderCode,
   House,
   Mail,
   Moon,
+  PenLine,
   Sun,
 } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
@@ -15,8 +15,8 @@ import { GithubMark, LinkedinMark, XMark } from "./BrandIcons";
 
 const NAV_ICONS = {
   "/experience": BriefcaseBusiness,
-  "/projects": FolderKanban,
-  "/articles": FileText,
+  "/projects": FolderCode,
+  "/articles": PenLine,
 } as const;
 
 const STROKE = 2;
@@ -94,7 +94,7 @@ export function Nav() {
           title="Resume"
           className="dock-item dock-nav"
         >
-          <Download strokeWidth={STROKE} />
+          <FileUser strokeWidth={STROKE} />
         </a>
 
         <span aria-hidden className="dock-divider dock-divider-main" />

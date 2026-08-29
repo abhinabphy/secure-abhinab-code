@@ -86,7 +86,7 @@ function Portrait({ className = "" }: { className?: string }) {
 
 export function Landing() {
   return (
-    <section id="top" className="relative overflow-hidden px-5 pb-40 pt-20 sm:pt-24">
+    <section id="top" className="relative overflow-hidden px-5 pb-32 pt-20 sm:pt-24">
       <div aria-hidden className="page-glow pointer-events-none absolute inset-0" />
       <div
         aria-hidden
@@ -94,7 +94,7 @@ export function Landing() {
       />
 
       <div className="relative mx-auto max-w-5xl">
-        <div className="grid items-stretch gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
           <div>
             <h1 className="text-5xl font-normal tracking-tight sm:text-6xl">
               Hi, I&apos;m <span className="font-serif italic text-primary">Abhinab</span>
@@ -104,7 +104,7 @@ export function Landing() {
               I love <Typed />
             </p>
 
-            <Portrait className="mt-10 max-w-xs lg:hidden aspect-[3/4]" />
+            <Portrait className="mt-10 w-full max-w-[280px] aspect-[3/4] lg:hidden" />
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
@@ -141,22 +141,12 @@ export function Landing() {
             </div>
 
             <div className="mt-14">
-              <div className="flex items-center gap-3">
-                <span className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
-                <h2 className="mono-label text-primary/90">Interests</h2>
-                <span className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
-              </div>
-              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              <h2 className="text-lg font-bold text-primary">
+                Some things I&apos;m interested in:
+              </h2>
+              <ul className="mt-5 space-y-3 text-base leading-relaxed text-foreground/80 sm:text-lg">
                 {INTERESTS.map((item) => (
-                  <li
-                    key={item}
-                    className="interest-card group flex items-start gap-3 rounded-lg border border-border/60 px-4 py-3 text-sm leading-relaxed text-foreground/80 transition-all"
-                  >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    </span>
-                    <span>{item}</span>
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
@@ -188,7 +178,7 @@ export function Landing() {
             </div>
           </div>
 
-          <Portrait className="hidden lg:block lg:mt-0 lg:h-full lg:min-h-0 lg:max-h-[640px]" />
+          <Portrait className="hidden w-full max-w-[280px] aspect-[3/4] lg:mt-0 lg:block" />
         </div>
       </div>
     </section>
