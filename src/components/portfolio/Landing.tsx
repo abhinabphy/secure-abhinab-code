@@ -94,7 +94,7 @@ export function Landing() {
       />
 
       <div className="relative mx-auto max-w-5xl">
-        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
+        <div className="grid items-stretch gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
           <div>
             <h1 className="text-5xl font-normal tracking-tight sm:text-6xl">
               Hi, I&apos;m <span className="font-serif italic text-primary">Abhinab</span>
@@ -141,12 +141,22 @@ export function Landing() {
             </div>
 
             <div className="mt-14">
-              <h2 className="text-lg font-semibold tracking-tight">
-                Some things I&apos;m interested in:
-              </h2>
-              <ul className="mt-5 list-disc space-y-2.5 pl-5 text-base leading-relaxed text-foreground/80 marker:text-primary sm:text-lg">
+              <div className="flex items-center gap-3">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
+                <h2 className="mono-label text-primary/90">Interests</h2>
+                <span className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+              </div>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {INTERESTS.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li
+                    key={item}
+                    className="interest-card group flex items-start gap-3 rounded-lg border border-border/60 px-4 py-3 text-sm leading-relaxed text-foreground/80 transition-all"
+                  >
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    </span>
+                    <span>{item}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -178,7 +188,7 @@ export function Landing() {
             </div>
           </div>
 
-          <Portrait className="hidden lg:block lg:mt-0 lg:max-h-[520px] lg:aspect-[3/4]" />
+          <Portrait className="hidden lg:block lg:mt-0 lg:h-full lg:min-h-0 lg:max-h-[640px]" />
         </div>
       </div>
     </section>

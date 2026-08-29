@@ -230,9 +230,14 @@
 }
 
 .dock-item svg {
+  height: 1.0625rem;
+  width: 1.0625rem;
+  transition: transform 0.2s ease;
+}
+
+.dock-item.dock-nav svg {
   height: 1.125rem;
   width: 1.125rem;
-  transition: transform 0.2s ease;
 }
 
 .dock-brand .dock-brand-svg {
@@ -284,9 +289,8 @@
   flex-shrink: 0;
 }
 
-.dock-divider:first-child,
-.dock-divider:last-child {
-  display: none;
+.dock-divider-main {
+  margin: 0 0.5rem;
 }
 
 .portrait-card {
@@ -294,6 +298,8 @@
   border: 1px solid color-mix(in oklab, var(--primary) 22%, var(--border));
   border-radius: var(--radius-2xl);
   overflow: hidden;
+  height: 100%;
+  min-height: 0;
   box-shadow:
     0 0 0 1px color-mix(in oklab, var(--primary) 8%, transparent),
     0 20px 60px -30px color-mix(in oklab, var(--primary) 35%, transparent);
@@ -305,6 +311,15 @@
   object-fit: cover;
   object-position: center 12%;
   filter: saturate(0.92) sepia(0.08) brightness(0.97);
+}
+
+.interest-card {
+  background: color-mix(in oklab, var(--surface) 40%, transparent);
+}
+
+.interest-card:hover {
+  border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
+  background: color-mix(in oklab, var(--primary) 5%, transparent);
 }
 
 .portrait-card::after {

@@ -19,7 +19,7 @@ const NAV_ICONS = {
   "/articles": FileText,
 } as const;
 
-const STROKE = 1.75;
+const STROKE = 2;
 
 function getInitialTheme(): "light" | "dark" {
   if (typeof document === "undefined") return "dark";
@@ -64,7 +64,7 @@ export function Nav() {
           borderColor: "var(--dock-border)",
         }}
       >
-        <Link to="/" aria-label="Home" title="Home" data-active={pathname === "/"} className="dock-item">
+        <Link to="/" aria-label="Home" title="Home" data-active={pathname === "/"} className="dock-item dock-nav">
           <House strokeWidth={STROKE} />
         </Link>
         {NAV_LINKS.map((item) => {
@@ -77,7 +77,7 @@ export function Nav() {
               aria-label={item.label}
               title={item.label}
               data-active={active}
-              className="dock-item"
+              className="dock-item dock-nav"
             >
               <Icon strokeWidth={STROKE} />
             </Link>
@@ -92,12 +92,12 @@ export function Nav() {
           rel="noreferrer"
           aria-label="Resume"
           title="Resume"
-          className="dock-item"
+          className="dock-item dock-nav"
         >
           <Download strokeWidth={STROKE} />
         </a>
 
-        <span aria-hidden className="dock-divider" />
+        <span aria-hidden className="dock-divider dock-divider-main" />
 
         <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-item dock-brand">
           <GithubMark className="dock-brand-svg" />
