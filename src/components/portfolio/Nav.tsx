@@ -4,22 +4,22 @@ import {
   Download,
   FileText,
   FolderKanban,
-  Github,
   House,
-  Linkedin,
   Mail,
   Moon,
   Sun,
-  X as XIcon,
 } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { EMAIL, GITHUB, LINKEDIN, NAV_LINKS, RESUME_URL } from "./data";
+import { GithubMark, LinkedinMark, XMark } from "./BrandIcons";
 
 const NAV_ICONS = {
   "/experience": BriefcaseBusiness,
   "/projects": FolderKanban,
   "/articles": FileText,
 } as const;
+
+const STROKE = 1.75;
 
 function getInitialTheme(): "light" | "dark" {
   if (typeof document === "undefined") return "dark";
@@ -65,7 +65,7 @@ export function Nav() {
         }}
       >
         <Link to="/" aria-label="Home" title="Home" data-active={pathname === "/"} className="dock-item">
-          <House strokeWidth={1.6} />
+          <House strokeWidth={STROKE} />
         </Link>
         {NAV_LINKS.map((item) => {
           const Icon = NAV_ICONS[item.to];
@@ -79,7 +79,7 @@ export function Nav() {
               data-active={active}
               className="dock-item"
             >
-              <Icon strokeWidth={1.6} />
+              <Icon strokeWidth={STROKE} />
             </Link>
           );
         })}
@@ -94,22 +94,22 @@ export function Nav() {
           title="Resume"
           className="dock-item"
         >
-          <Download strokeWidth={1.6} />
+          <Download strokeWidth={STROKE} />
         </a>
 
         <span aria-hidden className="dock-divider" />
 
-        <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-item">
-          <Github strokeWidth={1.6} />
+        <a href={GITHUB} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub" className="dock-item dock-brand">
+          <GithubMark className="dock-brand-svg" />
         </a>
-        <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-item">
-          <Linkedin strokeWidth={1.6} />
+        <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-item dock-brand">
+          <LinkedinMark className="dock-brand-svg" />
         </a>
-        <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-item">
-          <XIcon strokeWidth={1.6} />
+        <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-item dock-brand">
+          <XMark className="dock-brand-svg" />
         </a>
         <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email" className="dock-item">
-          <Mail strokeWidth={1.6} />
+          <Mail strokeWidth={STROKE} />
         </a>
 
         <span aria-hidden className="dock-divider" />
@@ -121,7 +121,7 @@ export function Nav() {
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           className="dock-item"
         >
-          {theme === "dark" ? <Sun strokeWidth={1.6} /> : <Moon strokeWidth={1.6} />}
+          {theme === "dark" ? <Sun strokeWidth={STROKE} /> : <Moon strokeWidth={STROKE} />}
         </button>
       </nav>
     </header>

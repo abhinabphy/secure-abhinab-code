@@ -235,6 +235,16 @@
   transition: transform 0.2s ease;
 }
 
+.dock-brand .dock-brand-svg {
+  height: 0.9375rem;
+  width: 0.9375rem;
+  transition: transform 0.2s ease;
+}
+
+.dock-item.dock-brand:hover .dock-brand-svg {
+  transform: scale(1.12);
+}
+
 .dock-item:hover {
   color: var(--dock-hover-fg);
   background: color-mix(in oklab, var(--primary) 10%, transparent);
