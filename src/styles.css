@@ -298,8 +298,6 @@
   border: 1px solid color-mix(in oklab, var(--primary) 22%, var(--border));
   border-radius: 20px;
   overflow: hidden;
-  height: 100%;
-  min-height: 0;
   box-shadow:
     0 0 0 1px color-mix(in oklab, var(--primary) 8%, transparent),
     0 20px 60px -30px color-mix(in oklab, var(--primary) 35%, transparent);

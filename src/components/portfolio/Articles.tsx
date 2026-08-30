@@ -92,8 +92,8 @@ export function Articles() {
       ) : (
         <ul className="grid gap-5 md:grid-cols-2">
           {shown.map((p, i) => (
-            <li key={p.slug}>
-              <Reveal delay={i * 70}>
+            <li key={p.slug} className="h-full">
+              <Reveal delay={i * 70} className="h-full">
                 <article className="card-surface flex h-full flex-col p-6">
                   <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                     <h3 className="text-lg font-semibold tracking-tight">
