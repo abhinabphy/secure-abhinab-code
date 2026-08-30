@@ -103,7 +103,7 @@ export function Nav() {
         <a href={LINKEDIN} target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn" className="dock-item dock-brand">
           <LinkedinMark className="dock-brand-svg" />
         </a>
-        <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-item dock-brand">
+        <a href="https://x.com/blockphy" target="_blank" rel="noreferrer" aria-label="X" title="X" className="dock-item dock-brand">
           <XMark className="dock-brand-svg" />
         </a>
         <a href={`mailto:${EMAIL}`} aria-label="Email" title="Email" className="dock-item">

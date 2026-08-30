@@ -108,7 +108,7 @@ export function Landing() {
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>
-  I study Engineering Physics at{" "}
+  I&apos;m an Engineering Physics undergrad at{" "}
   <a
     href="https://www.iitg.ac.in/"
     target="_blank"
@@ -116,18 +116,16 @@ export function Landing() {
     className="prose-link"
   >
     IIT Guwahati
-  </a>
-  , where I moved from modeling physical systems to modeling adversarial ones —
-  AMM mechanics, liquidity pricing, and block-by-block order flow. The habit of
-  hunting down the subtle assumption that breaks a physical model turned out to
-  be the exact same skill needed for smart contracts.
+  </a>{" "}
+  who pivoted to Web3 security and quant DeFi. Physics taught me how to find the
+  subtle edge cases that break systems, which turned out to be perfect for finding
+  smart contract vulnerabilities.
 </p>
 <p>
-  My focus sits at the intersection of quantitative DeFi and Web3 security:
-  writing low-level Solidity and Rust built to handle toxic order flow and hostile
-  mempools. Having won major hackathons shipping ZK and Move systems, I keep that
-  same bias for shipping fast, but always anchored in building battle-tested code
-  that survives in production.
+  I mainly work with low-level Solidity and Rust—building DEX mechanics, analyzing
+  EVM internals, and auditing code. I move fast, ship often (with a few hackathon
+  wins along the way), and care deeply about building architecture that holds up
+  under pressure.
 </p>
             </div>
 
@@ -178,7 +176,7 @@ export function Landing() {
             </div>
           </div>
 
-          <Portrait className="hidden w-full max-w-[250px] aspect-[4/5] lg:mt-0 lg:block" />
+          <Portrait className="hidden w-full max-w-[250px] aspect-[4/5] lg:mt-[150px] lg:block" />
         </div>
       </div>
     </section>

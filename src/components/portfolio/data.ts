@@ -7,8 +7,8 @@ export const NAV_LINKS = [
 export { PROJECTS, type Project } from "@/lib/content";
 
 export const EMAIL = "abhinabiitg@gmail.com";
-export const GITHUB = "https://github.com/";
-export const LINKEDIN = "https://www.linkedin.com/";
+export const GITHUB = "https://github.com/abhinabphy";
+export const LINKEDIN = "https://www.linkedin.com/in/abhinabdasiitg";
 export const RESUME_URL = "/resume.pdf";
 
 export const EXPERIENCE = [
