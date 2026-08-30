@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
-import portrait from "@/assets/abhinab-portrait.jpg";
+import portrait from "@/assets/myimage.png";
 import { EMAIL } from "./data";
 
 const ROTATING = [
