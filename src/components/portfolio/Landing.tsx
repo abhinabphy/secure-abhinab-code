@@ -104,7 +104,7 @@ export function Landing() {
               I love <Typed />
             </p>
 
-            <Portrait className="mt-10 w-full max-w-[280px] aspect-[3/4] lg:hidden" />
+            <Portrait className="mt-8 h-[220px] w-full max-w-[180px] justify-self-center lg:hidden" />
 
             <div className="mt-12 space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
               <p>

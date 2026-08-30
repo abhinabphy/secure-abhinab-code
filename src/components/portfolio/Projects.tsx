@@ -33,8 +33,7 @@ export function Projects() {
       <div className="relative">
         <span className="mono-label text-primary">{"// projects"}</span>
         <p className="mt-5 max-w-3xl text-2xl leading-relaxed text-foreground/90 sm:text-3xl">
-          Some projects I&apos;ve built with real users in mind, some at hackathons, and some
-          for pure joy. I learnt something every time.
+          Six hackathon wins, one government bounty — code built to take a hit, not just survive a demo.
         </p>
 
         <div className="mt-7 flex flex-wrap gap-2" role="group" aria-label="Filter projects">

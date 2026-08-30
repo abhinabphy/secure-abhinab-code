@@ -84,8 +84,6 @@ export function Nav() {
           );
         })}
 
-        <span aria-hidden className="dock-divider" />
-
         <a
           href={RESUME_URL}
           target="_blank"
